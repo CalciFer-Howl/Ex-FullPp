@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upload a File</h1>
+  <form id="uploadForm">
+    <input type="file" id="fileInput" name="file" required />
+    <button type="submit">Upload</button>
+  </form>
+  <h2>Response:</h2>
+  <pre id="responseOutput"></pre>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const responseOutput = document.getElementById('responseOutput');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const fileInput = document.getElementById('fileInput');
+      if (!fileInput.files.length) {
+        responseOutput.textContent = 'Please select a file to upload.';
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Error uploading file');
+        }
+
+        const data = await response.json();
+        responseOutput.textContent = data.code;
+      } catch (error) {
+        responseOutput.textContent = `Error: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
