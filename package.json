@@ -1,0 +1,20 @@
+{
+  "name": "file-upload-app",
+  "version": "1.0.0",
+  "description": "An Express.js app for uploading files and displaying processed results.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5",
+    "@whiskeysockets/baileys": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
