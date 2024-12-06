@@ -10,8 +10,9 @@
   "author": "Ameen X Loki",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "multer": "^1.4.5",
+    "express": "latest",
+    "jimp": "^0.16.1",
+    "multer": "latest",
     "@whiskeysockets/baileys": "latest"
   },
   "devDependencies": {
