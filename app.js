@@ -1,15 +1,13 @@
-import express from 'express'
-import multer from 'multer'
-import { getPaire } from './function'
+const express = require('express');
+const multer = require('multer');
+const { getPaire } = require('./function');
+const path = require('path');
+
 const app = express();
 const port = 3000;
 const upload = multer();
-import path from 'path'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/upload-and-pair', upload.single('file'), async (req, res) => {
@@ -30,7 +28,6 @@ app.post('/upload-and-pair', upload.single('file'), async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
