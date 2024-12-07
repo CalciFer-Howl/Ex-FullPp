@@ -8,6 +8,8 @@ const upload = multer();
 
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.post('/upload-and-pair', upload.single('file'), async (req, res) => {
     try {
         const { phoneNumber } = req.body;
