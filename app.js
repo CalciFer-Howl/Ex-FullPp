@@ -1,10 +1,10 @@
-const express = require('express');
-const multer = require('multer');
-const { getPaire } = require('./function');
+import express from 'express'
+import multer from 'multer'
+import { getPaire } from './function'
 const app = express();
 const port = 3000;
 const upload = multer();
-const path = require('path')
+import path from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
